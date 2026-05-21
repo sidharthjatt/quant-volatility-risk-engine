@@ -64,12 +64,15 @@ def trend_volatility_signal(
     temp_df["MA_Price"] = temp_df["Price"].rolling(ma_window).mean()
 
     signal = np.where(
-        (temp_df["Price"] > temp_df["MA_Price"]) &
         (
-            temp_df["Forecasted_Volatility"]
-            < temp_df["Forecasted_Volatility"]
-              .rolling(vol_window)
-              .median()
+            (temp_df["Price"] > temp_df["MA_Price"]) &   # trend
+            (
+                temp_df["Forecasted_Volatility"]
+                < temp_df["Forecasted_Volatility"]
+                .rolling(vol_window)
+                .median()
+            ) &                                          # volatility
+            (temp_df["RSI_14"] < 70)                     # momentum (NEW)
         ),
         1,
         0
