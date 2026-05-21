@@ -39,6 +39,43 @@ def preprocess_data():
 
     returns_df = df[["Date", "Ticker", "Adj Close", "Volume", "log_return"]]
 
+    # =========================
+    # new improvement - Moving average added 
+    # =========================
+
+    returns_df["MA_5"] = returns_df.groupby("Ticker")["Adj Close"].transform(
+        lambda x: x.rolling(5).mean()
+    )
+
+    returns_df["MA_10"] = returns_df.groupby("Ticker")["Adj Close"].transform(
+        lambda x: x.rolling(10).mean()
+    )
+    # print(returns_df.head())
+    # New improvement end of MA
+
+    # =========================
+    # new improvement - RSI added 
+    # =========================
+
+    def compute_rsi(series, window=14):
+        delta = series.diff()
+
+        gain = (delta.where(delta > 0, 0)).rolling(window).mean()
+        loss = (-delta.where(delta < 0, 0)).rolling(window).mean()
+
+        rs = gain / loss
+        rsi = 100 - (100 / (1 + rs))
+
+        return rsi
+
+    returns_df["RSI_14"] = returns_df.groupby("Ticker")["Adj Close"].transform(
+        lambda x: compute_rsi(x, 14)
+    )
+    # New improvement end of RSI
+    # print(returns_df.head())
+
+
+
     clean_path = "nifty50_history_with_adj/nifty50_log_returns_clean.csv"
     returns_df.to_csv(clean_path, index=False)
 
