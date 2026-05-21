@@ -57,8 +57,22 @@ def run_portfolio_backtest(returns_df, portfolio_stocks):
     # Portfolio returns (RAW)
     # -----------------------------------
     portfolio_df = portfolio_df.copy()
+
     portfolio_df["Portfolio_Return"] = (weights * portfolio_df).sum(axis=1)
 
+    # =========================
+    # STOP-LOSS ADDED
+    # =========================
+
+    stop_loss_threshold = -0.02  # -2% loss limit
+
+    portfolio_df["Portfolio_Return"] = np.where(
+        portfolio_df["Portfolio_Return"] < stop_loss_threshold,
+        stop_loss_threshold,
+        portfolio_df["Portfolio_Return"]
+    )
+    # stop loss end here
+    
     # -----------------------------------
     # RISK-CONSTRAINED ALLOCATION (NEW)
     # -----------------------------------
