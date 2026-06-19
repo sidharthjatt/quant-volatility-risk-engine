@@ -3,7 +3,7 @@
 **Tech Stack:** Python 3.11  
 **Domain:** Quantitative Finance  
 
-🔗 Project Repo: https://github.com/sidharth-choudhary786/quant-volatility-risk-engine
+🔗 Project Repo: https://github.com/sidharthjatt/quant-volatility-risk-engine
 
 
 ## Quick Start
@@ -216,11 +216,13 @@ explicit assumptions, controlled experimentation, and honest evaluation when
 results are uncomfortable.
 
 
-### 8. Author
+### Sidharth Choudhary
+**Email**: jattsidh786@gmail.com
+
+**LinkedIn**: [Sidharth Choudhary](https://www.linkedin.com/in/sidharthjatt)
+
+**GitHub**: [Sidharth Choudhary](https://github.com/sidharthjatt)
+
+**Website**: [Sidharth Choudhary](https://www.sidharthjatt.com)
 
 Designed and implemented end-to-end as a personal quantitative research system.
-
-** Email**: jattsidh786@gmail.com  
-** LinkedIn**: [Sidharth Choudhary](https://www.linkedin.com/in/sidharth-choudhary786)  
-** GitHub**: [sidharth-choudhary786](https://github.com/sidharth-choudhary786)  
-** Portfolio**: [All My Projects](https://github.com/sidharth-choudhary786)
